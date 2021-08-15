@@ -8,7 +8,7 @@ registerEnumType(ROLE, {
 });
 
 @ObjectType({ isAbstract: true })
-@Entity('User')
+@Entity('users')
 export class User extends BaseEntity {
   @Field({ nullable: true })
   @Column()
@@ -17,10 +17,6 @@ export class User extends BaseEntity {
   @Field({ nullable: true })
   @Column()
   email: string;
-
-  @Field({ nullable: true })
-  @Column()
-  username: string;
 
   @Field({ nullable: true })
   @Column()
