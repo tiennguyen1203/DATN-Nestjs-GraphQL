@@ -8,7 +8,7 @@ import {
 
 export class BaseEntity extends TypeormEntity {
   @Field()
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Field({ nullable: true })

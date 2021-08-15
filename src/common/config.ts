@@ -1,6 +1,5 @@
+import 'dotenv/config';
 import { APP_ENVIRONMENTS } from './constants';
-
-require('dotenv').config();
 
 export const config = {
   api: {

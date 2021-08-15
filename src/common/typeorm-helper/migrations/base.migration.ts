@@ -1,13 +1,15 @@
-import { BaseTable } from './base.table';
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { MigrationInterface, QueryRunner, Table, TableIndex } from 'typeorm';
+import { BaseTable } from './base.table';
 
 export abstract class BaseMigration implements MigrationInterface {
   private queryRunner: QueryRunner = null;
 
   async create(tableName, callback: (table: BaseTable) => void) {
-    let table = new BaseTable();
+    const table = new BaseTable();
     callback(table);
-    let newTable = new Table();
+    const newTable = new Table();
     newTable.name = tableName;
     newTable.columns = table.getNewColumns();
     await this.queryRunner.createTable(newTable);
@@ -16,9 +18,9 @@ export abstract class BaseMigration implements MigrationInterface {
   }
 
   async update(tableName, callback: (table: BaseTable) => void) {
-    let table = new BaseTable();
+    const table = new BaseTable();
     callback(table);
-    for (let column of table.columnToDeletes) {
+    for (const column of table.columnToDeletes) {
       await this.queryRunner.dropColumn(tableName, column);
     }
     if (table.getNewColumns()) {
@@ -33,14 +35,14 @@ export abstract class BaseMigration implements MigrationInterface {
   }
 
   async createForeignKeys(tableName, table: BaseTable) {
-    for (let column of table.getForeignKeys()) {
+    for (const column of table.getForeignKeys()) {
       await this.queryRunner.createForeignKey(tableName, column);
     }
   }
 
   async createIndex(tableName, table: BaseTable) {
-    for (let column of table.getIndexColumns()) {
-      let index = new TableIndex({
+    for (const column of table.getIndexColumns()) {
+      const index = new TableIndex({
         name: `${tableName}-${column.name}Index`,
         columnNames: [column.name],
       });

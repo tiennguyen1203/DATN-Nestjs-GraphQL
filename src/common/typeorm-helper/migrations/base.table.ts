@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { TableColumnOptions } from 'typeorm/schema-builder/options/TableColumnOptions';
 import { TableColumn } from 'typeorm';
 import { BaseColumn } from './base.column';
@@ -28,7 +29,7 @@ export class BaseTable {
 
   public getForeignKeys() {
     let foreignKeys = [];
-    for (let column of this.columns) {
+    for (const column of this.columns) {
       foreignKeys = foreignKeys.concat(column.foreignKeys);
     }
     return foreignKeys;
@@ -42,20 +43,20 @@ export class BaseTable {
       new TableColumn({
         ...intOptions,
         ...options,
-      } as any),
+      }),
     );
   }
 
   public string(
     name: string,
-    length: number = 255,
+    length = 255,
     options: Partial<TableColumnOptions> = null,
   ) {
-    let column = this.getColumnValue(
+    const column = this.getColumnValue(
       {
         name: name,
         type: 'character varying',
-        length: length as any,
+        length: length as unknown as string,
       },
       options,
     );
@@ -65,7 +66,7 @@ export class BaseTable {
   }
 
   public strings(name: string, options: Partial<TableColumnOptions> = null) {
-    let column = this.getColumnValue(
+    const column = this.getColumnValue(
       {
         name: name,
         type: 'character varying',
@@ -78,11 +79,8 @@ export class BaseTable {
     return column;
   }
 
-  public uuid(
-    name: string = 'id',
-    options: Partial<TableColumnOptions> = null,
-  ) {
-    let column = this.getColumnValue(
+  public uuid(name = 'id', options: Partial<TableColumnOptions> = null) {
+    const column = this.getColumnValue(
       {
         name: name,
         type: 'uuid',
@@ -93,11 +91,8 @@ export class BaseTable {
     return column;
   }
 
-  public primaryUuid(
-    name: string = 'id',
-    options: Partial<TableColumnOptions> = null,
-  ) {
-    let column = this.getColumnValue(
+  public primaryUuid(name = 'id', options: Partial<TableColumnOptions> = null) {
+    const column = this.getColumnValue(
       {
         name: name,
         type: 'uuid',
@@ -111,7 +106,7 @@ export class BaseTable {
   }
 
   public integer(name: string, options: Partial<TableColumnOptions> = null) {
-    let column = this.getColumnValue(
+    const column = this.getColumnValue(
       {
         name: name,
         type: 'integer',
@@ -123,7 +118,7 @@ export class BaseTable {
   }
 
   public integers(name: string, options: Partial<TableColumnOptions> = null) {
-    let column = this.getColumnValue(
+    const column = this.getColumnValue(
       {
         name: name,
         type: 'integer[]',
@@ -135,7 +130,7 @@ export class BaseTable {
   }
 
   public double(name: string, options: Partial<TableColumnOptions> = null) {
-    let column = this.getColumnValue(
+    const column = this.getColumnValue(
       {
         name: name,
         type: 'double precision',
@@ -147,7 +142,7 @@ export class BaseTable {
   }
 
   public timestamp(name: string, options: Partial<TableColumnOptions> = null) {
-    let column = this.getColumnValue(
+    const column = this.getColumnValue(
       {
         name: name,
         type: 'timestamp',
@@ -160,11 +155,11 @@ export class BaseTable {
 
   public decimal(
     name: string,
-    precision: number = 10,
-    scale: number = 2,
+    precision = 10,
+    scale = 2,
     options: Partial<TableColumnOptions> = null,
   ) {
-    let column = this.getColumnValue(
+    const column = this.getColumnValue(
       {
         name: name,
         type: 'decimal',
@@ -178,7 +173,7 @@ export class BaseTable {
   }
 
   public boolean(name: string, options: Partial<TableColumnOptions> = null) {
-    let column = this.getColumnValue(
+    const column = this.getColumnValue(
       {
         name: name,
         type: 'boolean',
@@ -190,7 +185,7 @@ export class BaseTable {
   }
 
   public jsonb(name: string, options: Partial<TableColumnOptions> = null) {
-    let column = this.getColumnValue(
+    const column = this.getColumnValue(
       {
         name: name,
         type: 'jsonb',
@@ -202,7 +197,7 @@ export class BaseTable {
   }
 
   public json(name: string, options: Partial<TableColumnOptions> = null) {
-    let column = this.getColumnValue(
+    const column = this.getColumnValue(
       {
         name: name,
         type: 'json',
@@ -219,7 +214,7 @@ export class BaseTable {
   }
 
   public createdAt() {
-    let column = this.getColumnValue({
+    const column = this.getColumnValue({
       type: 'timestamp',
       name: 'createdAt',
       default: 'now()',
@@ -229,7 +224,7 @@ export class BaseTable {
   }
 
   public updatedAt() {
-    let column = this.getColumnValue({
+    const column = this.getColumnValue({
       type: 'timestamp',
       name: 'updatedAt',
       default: 'now()',
@@ -239,7 +234,7 @@ export class BaseTable {
   }
 
   public deletedAt() {
-    let column = this.getColumnValue({
+    const column = this.getColumnValue({
       type: 'timestamp',
       name: 'deletedAt',
       isNullable: true,

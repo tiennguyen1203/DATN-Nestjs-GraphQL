@@ -4,11 +4,12 @@ import { UsersModule } from './api/customer/users/users.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { APP_ENV, APP_ENVIRONMENTS } from './common/constants';
-import { ormconfig } from './db/main-db/ormconfig';
+import typeOrmConfig from './db/main-db/ormconfig';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      ...ormconfig(),
+      ...typeOrmConfig,
       keepConnectionAlive: true,
       logging: APP_ENV === APP_ENVIRONMENTS.dev,
     }),
