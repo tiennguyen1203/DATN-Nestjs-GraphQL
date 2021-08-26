@@ -12,11 +12,11 @@ exports.config = {
         adminWebsite: process.env.ADMIN_WEBSITE || '',
     },
     mainDatabaseDev: {
-        port: +process.env.DB_PORT || 5432,
-        host: process.env.DB_HOST || 'localhost',
-        username: process.env.DB_USERNAME || 'postgres',
-        password: process.env.DB_PASSWORD || 'hoang123',
-        dbname: process.env.DB_NAME || 'datn-main-db',
+        port: +process.env.DB_PORT,
+        host: process.env.DB_HOST,
+        username: process.env.DB_USERNAME,
+        password: process.env.DB_PASSWORD,
+        dbname: process.env.DB_NAME,
     },
     smtpService: {
         host: process.env.SMTP_HOST,

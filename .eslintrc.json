@@ -17,7 +17,36 @@
         "no-use-before-define": "error",
         "import/prefer-default-export": "off",
         "implicit-arrow-linebreak": "off",
-        "@typescript-eslint/no-unused-vars": "error"
+        "@typescript-eslint/no-unused-vars": "error",
+        "max-lines-per-function": ["error", { "max": 50, "skipBlankLines": true, "skipComments": true }],
+        "max-lines": ["error", { "max": 400, "skipBlankLines": true, "skipComments": true }],
+        "@typescript-eslint/naming-convention": [
+            "error",
+            {
+              "selector": "variable",
+              "format": ["camelCase", "UPPER_CASE"]
+            },
+            {
+              "selector": "function",
+              "format": ["camelCase"]
+            },
+            {
+              "selector": ["objectLiteralProperty", "typeProperty"],
+              "format": ["camelCase", "PascalCase"]
+            },
+            {
+              "selector": ["class", "interface", "typeAlias"],
+              "format": ["PascalCase"]
+            },
+            {
+              "selector": ["enumMember"],
+              "format": ["PascalCase", "camelCase"]
+            },
+            {
+              "selector": ["enum"],
+              "format": ["UPPER_CASE"]
+            }
+          ]
     },
     "settings": {
         "import/resolver": {
