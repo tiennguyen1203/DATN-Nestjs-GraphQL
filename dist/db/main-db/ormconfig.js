@@ -17,5 +17,6 @@ const typeOrmConfig = {
     },
     uuidExtension: 'uuid-ossp',
 };
+console.log('typeOrmConfig: ', typeOrmConfig);
 exports.default = typeOrmConfig;
 //# sourceMappingURL=ormconfig.js.map

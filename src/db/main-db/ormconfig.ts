@@ -17,5 +17,6 @@ const typeOrmConfig: ConnectionOptions = {
   },
   uuidExtension: 'uuid-ossp',
 };
+console.log('typeOrmConfig: ', typeOrmConfig);
 
 export default typeOrmConfig;
