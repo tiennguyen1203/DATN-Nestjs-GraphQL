@@ -9,8 +9,8 @@ export class CreateTableUser1628786269603 extends BaseMigration {
       table.string('role');
       table.string('phoneNumber').nullable();
       table.boolean('isActive').default(true);
-      table.createdAt();
-      table.updatedAt();
+      table.createdAt().nullable();
+      table.updatedAt().nullable();
     });
   }
 

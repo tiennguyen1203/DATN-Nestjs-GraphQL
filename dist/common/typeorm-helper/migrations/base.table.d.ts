@@ -1,5 +1,5 @@
-import { TableColumnOptions } from 'typeorm/schema-builder/options/TableColumnOptions';
 import { TableColumn } from 'typeorm';
+import { TableColumnOptions } from 'typeorm/schema-builder/options/TableColumnOptions';
 import { BaseColumn } from './base.column';
 export declare class BaseTable {
     private columns;
@@ -22,6 +22,7 @@ export declare class BaseTable {
     boolean(name: string, options?: Partial<TableColumnOptions>): BaseColumn;
     jsonb(name: string, options?: Partial<TableColumnOptions>): BaseColumn;
     json(name: string, options?: Partial<TableColumnOptions>): BaseColumn;
+    geometry(name: string): BaseColumn;
     baseTime(): void;
     createdAt(): BaseColumn;
     updatedAt(): BaseColumn;

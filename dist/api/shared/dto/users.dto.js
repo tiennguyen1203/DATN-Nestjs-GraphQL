@@ -12,6 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserDto = void 0;
 const query_graphql_1 = require("@nestjs-query/query-graphql");
 const graphql_1 = require("@nestjs/graphql");
+const constants_1 = require("../../../common/constants");
+graphql_1.registerEnumType(constants_1.ROLE, {
+    name: 'ROLE',
+});
 let UserDto = class UserDto {
 };
 __decorate([
@@ -27,11 +31,27 @@ __decorate([
     __metadata("design:type", String)
 ], UserDto.prototype, "fullName", void 0);
 __decorate([
-    query_graphql_1.FilterableField(),
+    query_graphql_1.FilterableField({ nullable: true }),
     __metadata("design:type", String)
 ], UserDto.prototype, "role", void 0);
+__decorate([
+    graphql_1.Field(),
+    __metadata("design:type", String)
+], UserDto.prototype, "phoneNumber", void 0);
+__decorate([
+    query_graphql_1.FilterableField({ nullable: true }),
+    __metadata("design:type", Boolean)
+], UserDto.prototype, "isActive", void 0);
+__decorate([
+    query_graphql_1.FilterableField(() => graphql_1.GraphQLISODateTime, { nullable: true }),
+    __metadata("design:type", Date)
+], UserDto.prototype, "createdAt", void 0);
+__decorate([
+    query_graphql_1.FilterableField(() => graphql_1.GraphQLISODateTime, { nullable: true }),
+    __metadata("design:type", Date)
+], UserDto.prototype, "updatedAt", void 0);
 UserDto = __decorate([
-    graphql_1.ObjectType()
+    graphql_1.ObjectType('User', { isAbstract: true })
 ], UserDto);
 exports.UserDto = UserDto;
 //# sourceMappingURL=users.dto.js.map

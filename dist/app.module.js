@@ -27,12 +27,7 @@ AppModule = __decorate([
                 installSubscriptionHandlers: true,
                 autoSchemaFile: 'superadmin-schema.gql',
                 path: '/superadmin',
-            }),
-            graphql_1.GraphQLModule.forRoot({
-                installSubscriptionHandlers: true,
-                autoSchemaFile: 'member-schema.gql',
-                path: '/member',
-                include: [users_module_1.UsersModule],
+                debug: true,
             }),
             users_module_2.UsersModule,
             users_module_1.UsersModule,

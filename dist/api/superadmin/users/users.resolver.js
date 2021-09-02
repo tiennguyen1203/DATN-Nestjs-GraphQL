@@ -13,29 +13,23 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersResolver = void 0;
+const core_1 = require("@nestjs-query/core");
+const query_graphql_1 = require("@nestjs-query/query-graphql");
 const graphql_1 = require("@nestjs/graphql");
-const auth_decorator_1 = require("../../../common/decorators/auth.decorator");
+const users_dto_1 = require("../../shared/dto/users.dto");
 const user_entity_1 = require("../../../db/main-db/entities/user.entity");
 const users_service_1 = require("./users.service");
-let UsersResolver = class UsersResolver {
-    constructor(usersService) {
-        this.usersService = usersService;
-    }
-    async getUser(id) {
-        return this.usersService.findOneById(id);
+let UsersResolver = class UsersResolver extends query_graphql_1.CRUDResolver(users_dto_1.UserDto) {
+    constructor(userQueryService, userService) {
+        super(userQueryService);
+        this.userQueryService = userQueryService;
+        this.userService = userService;
     }
 };
-__decorate([
-    graphql_1.Query(() => user_entity_1.User, { name: 'getUser' }),
-    __param(0, graphql_1.Args('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", Promise)
-], UsersResolver.prototype, "getUser", null);
 UsersResolver = __decorate([
     graphql_1.Resolver(() => user_entity_1.User),
-    auth_decorator_1.Authorize(),
-    __metadata("design:paramtypes", [users_service_1.UsersService])
+    __param(0, core_1.InjectQueryService(user_entity_1.User)),
+    __metadata("design:paramtypes", [Object, users_service_1.UsersService])
 ], UsersResolver);
 exports.UsersResolver = UsersResolver;
 //# sourceMappingURL=users.resolver.js.map

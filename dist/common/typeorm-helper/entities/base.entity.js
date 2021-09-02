@@ -10,22 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BaseEntity = void 0;
-const graphql_1 = require("@nestjs/graphql");
 const typeorm_1 = require("typeorm");
 class BaseEntity extends typeorm_1.BaseEntity {
 }
 __decorate([
-    graphql_1.Field(),
     typeorm_1.PrimaryGeneratedColumn('uuid'),
     __metadata("design:type", String)
 ], BaseEntity.prototype, "id", void 0);
 __decorate([
-    graphql_1.Field({ nullable: true }),
     typeorm_1.CreateDateColumn({ name: 'createdAt' }),
     __metadata("design:type", Date)
 ], BaseEntity.prototype, "createdAt", void 0);
 __decorate([
-    graphql_1.Field({ nullable: true }),
     typeorm_1.UpdateDateColumn({ name: 'updatedAt' }),
     __metadata("design:type", Date)
 ], BaseEntity.prototype, "updatedAt", void 0);

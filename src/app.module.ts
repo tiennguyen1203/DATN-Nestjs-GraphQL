@@ -26,12 +26,12 @@ import typeOrmConfig from './db/main-db/ormconfig';
     //   autoSchemaFile: 'admin-schema.gql',
     //   path: '/admin',
     // }),
-    GraphQLModule.forRoot({
-      installSubscriptionHandlers: true,
-      autoSchemaFile: 'member-schema.gql',
-      path: '/member',
-      include: [MemberUsersModule],
-    }),
+    // GraphQLModule.forRoot({
+    //   installSubscriptionHandlers: true,
+    //   autoSchemaFile: 'member-schema.gql',
+    //   path: '/member',
+    //   include: [MemberUsersModule],
+    // }),
     SuperadminUsersModule,
     MemberUsersModule,
     AuthModule,

@@ -133,6 +133,14 @@ class BaseTable {
         this.columns.push(column);
         return column;
     }
+    geometry(name) {
+        const column = this.getColumnValue({
+            name,
+            type: 'geometry(Point, 4326)',
+        });
+        this.columns.push(column);
+        return column;
+    }
     baseTime() {
         this.createdAt();
         this.updatedAt();

@@ -9,34 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.User = void 0;
-const constants_1 = require("../../../common/constants");
+exports.Place = void 0;
 const base_entity_1 = require("../../../common/typeorm-helper/entities/base.entity");
 const typeorm_1 = require("typeorm");
-let User = class User extends base_entity_1.BaseEntity {
+let Place = class Place extends base_entity_1.BaseEntity {
 };
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], User.prototype, "fullName", void 0);
+], Place.prototype, "name", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], User.prototype, "email", void 0);
+], Place.prototype, "ownerId", void 0);
 __decorate([
     typeorm_1.Column(),
     __metadata("design:type", String)
-], User.prototype, "phoneNumber", void 0);
-__decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", Boolean)
-], User.prototype, "isActive", void 0);
-__decorate([
-    typeorm_1.Column(),
-    __metadata("design:type", String)
-], User.prototype, "role", void 0);
-User = __decorate([
-    typeorm_1.Entity('users')
-], User);
-exports.User = User;
-//# sourceMappingURL=user.entity.js.map
+], Place.prototype, "city", void 0);
+Place = __decorate([
+    typeorm_1.Entity('place')
+], Place);
+exports.Place = Place;
+//# sourceMappingURL=place.entity.js.map

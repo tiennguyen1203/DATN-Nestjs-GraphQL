@@ -22,7 +22,7 @@
     "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config src/db/main-db/ormconfig.ts",
     "migration:create": "yarn typeorm migration:create -d src/db/main-db/migrations -n",
     "migration:run": "yarn typeorm -d src/db/main-db/migrations -- migration:run",
-    "migration:revert": "ts-node src/db/runMigrations.ts revert",
+    "migration:revert": "yarn typeorm -d src/db/main-db/migrations -- migration:revert",
     "migration:seed": "ts-node src/db/seeds/scripts/initDataCountries.ts"
   },
   "dependencies": {

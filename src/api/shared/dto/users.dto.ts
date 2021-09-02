@@ -1,7 +1,17 @@
 import { FilterableField, IDField } from '@nestjs-query/query-graphql';
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import {
+  Field,
+  GraphQLISODateTime,
+  ID,
+  ObjectType,
+  registerEnumType,
+} from '@nestjs/graphql';
+import { ROLE } from 'src/common/constants';
 
-@ObjectType()
+registerEnumType(ROLE, {
+  name: 'ROLE',
+});
+@ObjectType('User', { isAbstract: true })
 export class UserDto {
   @IDField(() => ID)
   id!: string;
@@ -12,6 +22,18 @@ export class UserDto {
   @Field(() => String)
   fullName: string;
 
-  @FilterableField()
-  role: string;
+  @FilterableField({ nullable: true })
+  role: ROLE;
+
+  @Field()
+  phoneNumber: string;
+
+  @FilterableField({ nullable: true })
+  isActive: boolean;
+
+  @FilterableField(() => GraphQLISODateTime, { nullable: true })
+  createdAt: Date;
+
+  @FilterableField(() => GraphQLISODateTime, { nullable: true })
+  updatedAt: Date;
 }

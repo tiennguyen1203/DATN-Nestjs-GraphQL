@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { TableColumnOptions } from 'typeorm/schema-builder/options/TableColumnOptions';
 import { TableColumn } from 'typeorm';
+import { TableColumnOptions } from 'typeorm/schema-builder/options/TableColumnOptions';
 import { BaseColumn } from './base.column';
 
 export class BaseTable {
@@ -204,6 +204,15 @@ export class BaseTable {
       },
       options,
     );
+    this.columns.push(column);
+    return column;
+  }
+
+  public geometry(name: string) {
+    const column = this.getColumnValue({
+      name,
+      type: 'geometry(Point, 4326)',
+    });
     this.columns.push(column);
     return column;
   }
