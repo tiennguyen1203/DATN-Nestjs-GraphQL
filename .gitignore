@@ -35,5 +35,6 @@ lerna-debug.log*
 
 .env
 superadmin-schema.gql
+admin-schema.gql
 member-schema.gql
 node_modules

@@ -1,4 +1,10 @@
-import { FilterableField, IDField } from '@nestjs-query/query-graphql';
+import {
+  FilterableField,
+  IDField,
+  PagingStrategies,
+  QueryOptions,
+  Relation,
+} from '@nestjs-query/query-graphql';
 import {
   Field,
   GraphQLISODateTime,
@@ -7,11 +13,14 @@ import {
   registerEnumType,
 } from '@nestjs/graphql';
 import { ROLE } from 'src/common/constants';
+import { PlaceDto } from './places.dto';
 
 registerEnumType(ROLE, {
   name: 'ROLE',
 });
 @ObjectType('User', { isAbstract: true })
+@Relation('places', () => PlaceDto)
+@QueryOptions({ pagingStrategy: PagingStrategies.OFFSET })
 export class UserDto {
   @IDField(() => ID)
   id!: string;

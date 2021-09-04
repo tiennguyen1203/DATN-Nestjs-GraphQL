@@ -1,9 +1,7 @@
 import { Module } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersModule as MemberUsersModule } from './api/member/users/users.module';
 import { AuthModule } from './api/shared/auth/auth.module';
-import { UsersModule as SuperadminUsersModule } from './api/superadmin/users/users.module';
+import { SuperadminModule } from './api/superadmin/superadmin.module';
 import { AppResolver } from './app.resolver';
 import { APP_ENV, APP_ENVIRONMENTS } from './common/constants';
 import typeOrmConfig from './db/main-db/ormconfig';
@@ -13,13 +11,7 @@ import typeOrmConfig from './db/main-db/ormconfig';
     TypeOrmModule.forRoot({
       ...typeOrmConfig,
       keepConnectionAlive: true,
-      logging: APP_ENV === APP_ENVIRONMENTS.dev,
-    }),
-    GraphQLModule.forRoot({
-      include: [SuperadminUsersModule],
-      installSubscriptionHandlers: true,
-      autoSchemaFile: 'superadmin-schema.gql',
-      path: '/superadmin',
+      logging: APP_ENV === APP_ENVIRONMENTS.dev ? 'all' : undefined,
     }),
     // GraphQLModule.forRoot({
     //   installSubscriptionHandlers: true,
@@ -32,8 +24,7 @@ import typeOrmConfig from './db/main-db/ormconfig';
     //   path: '/member',
     //   include: [MemberUsersModule],
     // }),
-    SuperadminUsersModule,
-    MemberUsersModule,
+    SuperadminModule,
     AuthModule,
   ],
   controllers: [],

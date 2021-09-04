@@ -26,6 +26,9 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   public validate<T extends Record<string, any>>(payload: T): T {
-    return payload;
+    return {
+      ...payload,
+      fullName: payload['custom:fullName'],
+    };
   }
 }

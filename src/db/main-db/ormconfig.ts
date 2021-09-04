@@ -16,7 +16,8 @@ const typeOrmConfig: ConnectionOptions = {
     migrationsDir: 'src/db/main-db/migrations',
   },
   uuidExtension: 'uuid-ossp',
+  logging: 'all',
+  logger: 'advanced-console',
 };
-console.log('typeOrmConfig: ', typeOrmConfig);
 
 export default typeOrmConfig;
